@@ -2,10 +2,7 @@ package br.com.claudes.challenge.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -22,10 +19,13 @@ public class Topic {
 
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
-  private Long id;
+  private Long topicId;
 
   private String title;
 
   private String description;
+
+  @OneToOne(mappedBy = "topicVoting")
+  private Session session;
 
 }
