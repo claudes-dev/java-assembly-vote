@@ -4,12 +4,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "TB_SESSAO")
 public class Session {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long sessionId;
+
+  @OneToOne()
+  @JoinColumn(name = "topicId")
+  private Topic topicVoting;
+
+  private LocalDateTime startingVoting;
+
+  private LocalDateTime finalVoting;
 
 }
