@@ -1,17 +1,24 @@
 package br.com.claudes.challenge.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 @Getter
 @Setter
-public class Pauta {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "TB_PAUTA")
+public class Topic {
+
+  public Topic(String title,String description){
+    this.title = title;
+    this.description = description;
+  }
 
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)

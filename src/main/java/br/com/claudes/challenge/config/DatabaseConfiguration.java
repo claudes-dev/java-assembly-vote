@@ -1,20 +1,18 @@
 package br.com.claudes.challenge.config;
 
-import com.zaxxer.hikari.*;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.*;
 import javax.sql.DataSource;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 @Slf4j
 @Configuration
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
-public class DatabaseConfig {
+public class DatabaseConfiguration {
 
   @Value("${spring.datasource.url}")
   private String dbUrl;
