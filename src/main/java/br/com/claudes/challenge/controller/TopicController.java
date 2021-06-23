@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @CrossOrigin
 @RestController()
@@ -20,7 +22,7 @@ public class TopicController {
     @Autowired
     private ITopicService iTopicService;
 
-    @PostMapping(value = "/topic" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/topic", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "API used to create a new topic voting")
     public ResponseEntity<Topic> createTopic(@RequestBody CreateTopicRequestDto createTopicRequestDto){
 
@@ -30,4 +32,13 @@ public class TopicController {
         return new ResponseEntity<Topic>(newTopic, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/topic" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "API used to get all topics")
+    public ResponseEntity<List<Topic>> getAllTopics(){
+
+        log.info("Starting get all topics");
+        List<Topic> topics = iTopicService.getAllTopics();
+        log.info("Ending  get all topics");
+        return new ResponseEntity<List<Topic>>(topics, HttpStatus.OK);
+    }
 }
