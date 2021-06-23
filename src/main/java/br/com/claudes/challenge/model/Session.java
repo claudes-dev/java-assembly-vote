@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -30,5 +31,8 @@ public class Session {
   private LocalDateTime startingVoting;
 
   private LocalDateTime finalVoting;
+
+  @OneToMany(mappedBy = "session")
+  private List<Vote> vote;
 
 }

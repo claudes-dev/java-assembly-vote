@@ -1,4 +1,4 @@
-package br.com.claudes.challenge.config;
+package br.com.claudes.challenge.configuration;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

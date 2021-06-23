@@ -28,12 +28,12 @@ public class SessionController {
 
     Session newSession = iSessionService.createSession(createSessionRequestDto);
 
-    return new ResponseEntity<Session>(newSession, HttpStatus.OK);
+    return new ResponseEntity<>(newSession, HttpStatus.OK);
   }
 
   @GetMapping(value = "/session", produces = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "API used to get all sessions")
   public ResponseEntity<List<Session>> createSession(){
-    return new ResponseEntity<List<Session>>(iSessionService.getAllSessions(), HttpStatus.OK);
+    return new ResponseEntity<>(iSessionService.getAllSessions(), HttpStatus.OK);
   }
 }

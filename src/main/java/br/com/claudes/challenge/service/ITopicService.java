@@ -8,15 +8,17 @@ import java.util.List;
 public interface ITopicService {
 
   /**
+   * create a net topic
    *
    * @param createTopicRequestDto
-   * @return
+   * @return Topic
    */
-  public  Topic createANewTopic(CreateTopicRequestDto createTopicRequestDto);
+  public Topic createANewTopic(CreateTopicRequestDto createTopicRequestDto);
 
   /**
+   * get all topics
    *
-   * @return
+   * @return list of topics
    */
-  List<Topic> getAllTopics();
+  public List<Topic> getAllTopics();
 }

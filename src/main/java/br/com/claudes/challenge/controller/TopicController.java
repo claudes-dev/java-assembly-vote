@@ -29,7 +29,7 @@ public class TopicController {
         log.info("Starting topic creation endpoint");
         Topic newTopic = iTopicService.createANewTopic(createTopicRequestDto);
         log.info("Ending topic creation endpoint");
-        return new ResponseEntity<Topic>(newTopic, HttpStatus.OK);
+        return new ResponseEntity<>(newTopic, HttpStatus.OK);
     }
 
     @GetMapping(value = "/topic" , produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,6 +39,6 @@ public class TopicController {
         log.info("Starting get all topics");
         List<Topic> topics = iTopicService.getAllTopics();
         log.info("Ending  get all topics");
-        return new ResponseEntity<List<Topic>>(topics, HttpStatus.OK);
+        return new ResponseEntity<>(topics, HttpStatus.OK);
     }
 }
