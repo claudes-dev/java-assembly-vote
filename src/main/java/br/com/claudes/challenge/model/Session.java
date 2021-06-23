@@ -13,6 +13,12 @@ import java.time.LocalDateTime;
 @Entity(name = "TB_SESSAO")
 public class Session {
 
+  public Session(Topic topicVoting, LocalDateTime startingVoting, LocalDateTime finalVoting){
+    this.topicVoting = topicVoting;
+    this.startingVoting = startingVoting;
+    this.finalVoting = finalVoting;
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long sessionId;
