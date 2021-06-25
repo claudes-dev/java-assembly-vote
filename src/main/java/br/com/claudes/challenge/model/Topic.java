@@ -5,10 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "TB_PAUTA")
 public class Topic {

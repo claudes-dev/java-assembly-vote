@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @CrossOrigin
 @RestController()
-@RequestMapping("/v1")
+@RequestMapping("topic-management/v1")
 public class TopicController {
 
     @Autowired
@@ -29,16 +29,16 @@ public class TopicController {
         log.info("Starting topic creation endpoint");
         Topic newTopic = iTopicService.createANewTopic(createTopicRequestDto);
         log.info("Ending topic creation endpoint");
-        return new ResponseEntity<Topic>(newTopic, HttpStatus.OK);
+        return new ResponseEntity<>(newTopic, HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/topic" , produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "API used to get all topics")
+    @ApiOperation(value = "API used to get all topics for test because i used postgres from heroku")
     public ResponseEntity<List<Topic>> getAllTopics(){
 
         log.info("Starting get all topics");
         List<Topic> topics = iTopicService.getAllTopics();
         log.info("Ending  get all topics");
-        return new ResponseEntity<List<Topic>>(topics, HttpStatus.OK);
+        return new ResponseEntity<>(topics, HttpStatus.OK);
     }
 }

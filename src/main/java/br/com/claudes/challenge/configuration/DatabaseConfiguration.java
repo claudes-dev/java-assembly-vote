@@ -1,4 +1,4 @@
-package br.com.claudes.challenge.config;
+package br.com.claudes.challenge.configuration;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -11,7 +11,6 @@ import javax.sql.DataSource;
 
 @Slf4j
 @Configuration
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class DatabaseConfiguration {
 
   @Value("${spring.datasource.url}")

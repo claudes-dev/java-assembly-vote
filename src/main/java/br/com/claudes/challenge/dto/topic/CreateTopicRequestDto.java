@@ -1,8 +1,10 @@
 package br.com.claudes.challenge.dto.topic;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CreateTopicRequestDto {
 
   private String title;

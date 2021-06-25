@@ -8,15 +8,17 @@ import java.util.List;
 public interface ISessionService {
 
   /**
+   * create a session
    *
    * @param createSessionRequestDto
-   * @return
+   * @return Session
    */
   Session createSession(CreateSessionRequestDto createSessionRequestDto);
 
   /**
+   * get all sessions
    *
-   * @return
+   * @return list of sessions
    */
   List<Session> getAllSessions();
 }
