@@ -11,7 +11,6 @@ import javax.sql.DataSource;
 
 @Slf4j
 @Configuration
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class DatabaseConfiguration {
 
   @Value("${spring.datasource.url}")
