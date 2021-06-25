@@ -16,6 +16,8 @@
 * JDBC_DATABASE_PASSWORD
 * JDBC_DATABASE_USERNAME
 
+### Para testar o projeto no swagger ao rodar o mesmo
+### utilize o seguinte context-path: java-assembly-vote/swagger-ui.html
 
 ## Objetivo
 
