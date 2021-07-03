@@ -1,4 +1,4 @@
-package br.com.claudes.challenge.dto.session;
+package br.com.claudes.challenge.domain.dto.session;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

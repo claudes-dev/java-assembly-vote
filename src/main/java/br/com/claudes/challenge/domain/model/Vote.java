@@ -1,14 +1,13 @@
-package br.com.claudes.challenge.model;
+package br.com.claudes.challenge.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Builder
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "TB_VOTO")
 public class Vote {

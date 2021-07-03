@@ -1,7 +1,7 @@
 package br.com.claudes.challenge.service;
 
-import br.com.claudes.challenge.dto.session.CreateSessionRequestDto;
-import br.com.claudes.challenge.model.Session;
+import br.com.claudes.challenge.domain.dto.session.CreateSessionRequestDto;
+import br.com.claudes.challenge.domain.model.Session;
 
 import java.util.List;
 

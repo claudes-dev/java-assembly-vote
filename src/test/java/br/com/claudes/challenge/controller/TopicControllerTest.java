@@ -1,10 +1,9 @@
 package br.com.claudes.challenge.controller;
 
-import br.com.claudes.challenge.dto.topic.CreateTopicRequestDto;
-import br.com.claudes.challenge.model.Topic;
+import br.com.claudes.challenge.domain.dto.topic.CreateTopicRequestDto;
+import br.com.claudes.challenge.domain.model.Topic;
 import br.com.claudes.challenge.service.ITopicService;
 import br.com.claudes.challenge.utils.JsonUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

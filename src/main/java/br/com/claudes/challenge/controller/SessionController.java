@@ -1,9 +1,8 @@
 package br.com.claudes.challenge.controller;
 
-import br.com.claudes.challenge.dto.session.CreateSessionRequestDto;
-import br.com.claudes.challenge.model.Session;
+import br.com.claudes.challenge.domain.dto.session.CreateSessionRequestDto;
+import br.com.claudes.challenge.domain.model.Session;
 import br.com.claudes.challenge.service.ISessionService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package br.com.claudes.challenge.controller;
 
-import br.com.claudes.challenge.dto.session.CreateSessionRequestDto;
-import br.com.claudes.challenge.model.Session;
+import br.com.claudes.challenge.domain.dto.session.CreateSessionRequestDto;
+import br.com.claudes.challenge.domain.model.Session;
 import br.com.claudes.challenge.service.ISessionService;
 import br.com.claudes.challenge.utils.JsonUtils;
 import org.junit.jupiter.api.Test;

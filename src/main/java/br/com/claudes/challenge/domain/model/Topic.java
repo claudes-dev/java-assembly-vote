@@ -1,11 +1,13 @@
-package br.com.claudes.challenge.model;
+package br.com.claudes.challenge.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 
+@Builder
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "TB_PAUTA")
 public class Topic {

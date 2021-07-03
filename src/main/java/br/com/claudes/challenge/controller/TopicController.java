@@ -1,7 +1,7 @@
 package br.com.claudes.challenge.controller;
 
-import br.com.claudes.challenge.dto.topic.CreateTopicRequestDto;
-import br.com.claudes.challenge.model.Topic;
+import br.com.claudes.challenge.domain.dto.topic.CreateTopicRequestDto;
+import br.com.claudes.challenge.domain.model.Topic;
 import br.com.claudes.challenge.service.ITopicService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
