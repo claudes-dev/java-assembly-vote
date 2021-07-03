@@ -1,4 +1,4 @@
-package br.com.claudes.challenge.dto.vote;
+package br.com.claudes.challenge.domain.dto.vote;
 
 import lombok.Getter;
 import lombok.Setter;

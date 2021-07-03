@@ -1,27 +1,26 @@
 package br.com.claudes.challenge.service.impl;
 
-import br.com.claudes.challenge.dto.vote.CountVotesResponseDto;
-import br.com.claudes.challenge.dto.vote.CreateVoteMapperDto;
-import br.com.claudes.challenge.dto.vote.CreateVoteRequestDto;
-import br.com.claudes.challenge.model.Session;
-import br.com.claudes.challenge.model.Vote;
-import br.com.claudes.challenge.repository.ISessionRepository;
-import br.com.claudes.challenge.repository.IVoteRepository;
+import br.com.claudes.challenge.domain.constants.SessionConstants;
+import br.com.claudes.challenge.domain.constants.VoteConstants;
+import br.com.claudes.challenge.domain.dto.vote.CountVotesResponseDto;
+import br.com.claudes.challenge.domain.dto.vote.CreateVoteRequestDto;
+import br.com.claudes.challenge.domain.model.Session;
+import br.com.claudes.challenge.domain.model.Vote;
+import br.com.claudes.challenge.domain.repository.ISessionRepository;
+import br.com.claudes.challenge.domain.repository.IVoteRepository;
+import br.com.claudes.challenge.handler.exceptions.ResourceBadRequestException;
 import br.com.claudes.challenge.service.IVoteService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class VoteServiceImpl implements IVoteService {
-
-  private static final String APPROVED_TOPIC = "Pauta aprovada!";
-
-  private static final String REJECTED_TOPIC = "Pauta rejeitada!";
 
   @Autowired
   private IVoteRepository iVoteRepository;
@@ -32,15 +31,26 @@ public class VoteServiceImpl implements IVoteService {
   @Override
   public Vote insertAVote(CreateVoteRequestDto createVoteRequestDto) {
     LocalDateTime currentDate = LocalDateTime.now();
-    Vote vote = new Vote();
+    Vote vote;
+
     Optional<Session> session = iSessionRepository.findById(createVoteRequestDto.getSessionId());
+    log.info("Find session by ID {}", createVoteRequestDto.getSessionId());
 
     if(session.isPresent() && currentDate.isBefore(session.get().getFinalVoting()) && currentDate.isAfter(session.get().getStartingVoting())){
       Optional<Vote> verificationVote = iVoteRepository.findByDocumentAndSessionId(createVoteRequestDto.getDocument(), createVoteRequestDto.getSessionId());
 
-      if(!verificationVote.isPresent()){
-        vote = iVoteRepository.save(CreateVoteMapperDto.createToEntity(session.get(), createVoteRequestDto));
+      if(verificationVote.isPresent()){
+        throw new ResourceBadRequestException(VoteConstants.THE_USER_ALREADY_VOTED);
+      }else{
+        Vote createVote = Vote.builder()
+                .vote(createVoteRequestDto.getVote())
+                .document(createVoteRequestDto.getDocument())
+                .session(session.get())
+                .build();
+        vote = iVoteRepository.save(createVote);
       }
+    }else{
+      throw new ResourceBadRequestException(SessionConstants.THE_SESSION_ENDED);
     }
 
 
@@ -71,9 +81,9 @@ public class VoteServiceImpl implements IVoteService {
     countVotesResponseDto.setTotalVotes(countNegativeVotes + countPositiveVotes);
 
     if(countPositiveVotes > countNegativeVotes){
-      countVotesResponseDto.setMessage(APPROVED_TOPIC);
+      countVotesResponseDto.setMessage(VoteConstants.APPROVED_TOPIC);
     }else{
-      countVotesResponseDto.setMessage(REJECTED_TOPIC);
+      countVotesResponseDto.setMessage(VoteConstants.REJECTED_TOPIC);
     }
     return countVotesResponseDto;
   }

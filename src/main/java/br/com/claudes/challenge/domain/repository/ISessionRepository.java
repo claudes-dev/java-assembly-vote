@@ -1,6 +1,6 @@
-package br.com.claudes.challenge.repository;
+package br.com.claudes.challenge.domain.repository;
 
-import br.com.claudes.challenge.model.Session;
+import br.com.claudes.challenge.domain.model.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

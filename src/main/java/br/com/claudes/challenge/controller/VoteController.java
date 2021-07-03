@@ -1,8 +1,8 @@
 package br.com.claudes.challenge.controller;
 
-import br.com.claudes.challenge.dto.vote.CountVotesResponseDto;
-import br.com.claudes.challenge.dto.vote.CreateVoteRequestDto;
-import br.com.claudes.challenge.model.Vote;
+import br.com.claudes.challenge.domain.dto.vote.CountVotesResponseDto;
+import br.com.claudes.challenge.domain.dto.vote.CreateVoteRequestDto;
+import br.com.claudes.challenge.domain.model.Vote;
 import br.com.claudes.challenge.service.IVoteService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
