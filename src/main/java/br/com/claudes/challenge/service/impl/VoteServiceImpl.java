@@ -9,6 +9,7 @@ import br.com.claudes.challenge.domain.model.Vote;
 import br.com.claudes.challenge.domain.repository.ISessionRepository;
 import br.com.claudes.challenge.domain.repository.IVoteRepository;
 import br.com.claudes.challenge.handler.exceptions.ResourceBadRequestException;
+import br.com.claudes.challenge.handler.exceptions.ResourceNotFoundException;
 import br.com.claudes.challenge.service.IVoteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,13 +66,15 @@ public class VoteServiceImpl implements IVoteService {
     List<Vote> voteList = iVoteRepository.findyBySessionId(sessionId);
 
     if(!voteList.isEmpty()){
-      countVotesResponseDto = CreateResponseToCountVotes(voteList);
+      countVotesResponseDto = createResponseToCountVotes(voteList);
+    }else{
+      throw new ResourceNotFoundException(SessionConstants.THE_SESSION_NOT_FOUND);
     }
 
     return countVotesResponseDto;
   }
 
-  private CountVotesResponseDto CreateResponseToCountVotes(List<Vote> voteList) {
+  private CountVotesResponseDto createResponseToCountVotes(List<Vote> voteList) {
     CountVotesResponseDto countVotesResponseDto = new CountVotesResponseDto();
     long countNegativeVotes = voteList.stream().filter(vote -> vote.getVote().equals(Boolean.FALSE)).count();
     long countPositiveVotes = voteList.stream().filter(vote -> vote.getVote().equals(Boolean.TRUE)).count();
@@ -82,9 +85,12 @@ public class VoteServiceImpl implements IVoteService {
 
     if(countPositiveVotes > countNegativeVotes){
       countVotesResponseDto.setMessage(VoteConstants.APPROVED_TOPIC);
-    }else{
+    }else if(countNegativeVotes > countPositiveVotes){
       countVotesResponseDto.setMessage(VoteConstants.REJECTED_TOPIC);
+    }else{
+      countVotesResponseDto.setMessage(VoteConstants.DRAW_TOPIC);
     }
+
     return countVotesResponseDto;
   }
 }

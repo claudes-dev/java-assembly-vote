@@ -12,11 +12,6 @@ import javax.persistence.*;
 @Entity(name = "TB_PAUTA")
 public class Topic {
 
-  public Topic(String title,String description){
-    this.title = title;
-    this.description = description;
-  }
-
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   private Long topicId;
