@@ -12,12 +12,6 @@ import javax.persistence.*;
 @Entity(name = "TB_VOTO")
 public class Vote {
 
-  public Vote(Session session, String document, Boolean vote) {
-    this.session = session;
-    this.document = document;
-    this.vote = vote;
-  }
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long voteId;

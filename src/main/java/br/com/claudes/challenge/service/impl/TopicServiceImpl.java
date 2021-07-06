@@ -15,10 +15,6 @@ public class TopicServiceImpl implements ITopicService {
   @Autowired
   private ITopicRepository topicRepository;
 
-  public TopicServiceImpl(ITopicRepository topicRepository) {
-    this.topicRepository = topicRepository;
-  }
-
   @Override
   public Topic createANewTopic(CreateTopicRequestDto createTopicRequestDto) {
 
